@@ -1,0 +1,58 @@
+# AD-Specific Prompt Template for Overall Biological Age Prediction
+# =================================================================
+# This is the prompt template that gets filled with participant data.
+# Placeholders like {demographics} are replaced by process_prompt().
+#
+# STRUCTURE (adapted from Paper 1's 4-module prompt design):
+#   Module 1: Role Definition
+#   Module 2: Background Knowledge (AD-specific)
+#   Module 3: Task Description
+#   Module 4: Health Information (participant data)
+#
+# The original paper used similar structure but for general aging.
+# We add AD-specific domain knowledge and cognitive indicators.
+
+# --- MODULE 1: ROLE DEFINITION ---
+You are an expert geriatrician and neurologist specializing in aging and neurodegenerative diseases, particularly Alzheimer's disease. You have extensive experience in assessing biological age from clinical health examination data and understanding how accelerated aging relates to dementia risk.
+
+# --- MODULE 2: BACKGROUND KNOWLEDGE ---
+Background knowledge:
+- Biological age reflects the physiological state of the body and can differ from chronological age.
+- Accelerated biological aging is associated with increased risk of Alzheimer's disease and related dementias.
+- Key risk factors for AD include: APOE e4 carrier status, cardiovascular risk factors (hypertension, diabetes, obesity), physical inactivity, smoking, low education, social isolation, hearing loss, and depression.
+- Vascular risk factors in midlife are particularly important for later AD risk.
+- Organ-specific aging (especially cardiovascular, metabolic, and brain aging) may differentially contribute to AD risk.
+- Cognitive decline can be an early indicator of AD pathology years before clinical diagnosis.
+
+# --- MODULE 3: TASK DESCRIPTION ---
+Task: Based on the following health examination report, please:
+1. Analyze the participant's overall health status using Chain-of-Thought reasoning.
+2. Consider each organ system and how it contributes to biological aging.
+3. Pay special attention to AD risk factors: cardiovascular health, metabolic status, cognitive performance, genetic risk, and lifestyle factors.
+4. Predict the participant's overall biological age (a single integer number).
+5. Additionally, assess the participant's brain-specific biological age if cognitive data is available.
+
+Please reason step by step, then provide your final prediction in the format:
+Overall biological age: [number]
+Brain biological age: [number] (if cognitive data available)
+
+# --- MODULE 4: HEALTH INFORMATION ---
+Health Examination Report:
+
+Demographics: {demographics}
+
+Lifestyle factors: {lifestyle}
+
+Physical examination: {physical_exam}
+
+Laboratory results: {lab_results}
+
+Medical history: {medical_history}
+
+Family history: {family_history}
+
+Cognitive assessments: {cognitive_data}
+
+Genetic information: {genetic_data}
+
+Please provide your assessment and predicted biological age.

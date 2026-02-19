@@ -1,0 +1,51 @@
+# Brain-Specific Prompt Template for AD Biological Age Prediction
+# ================================================================
+# This prompt focuses the LLM on brain/neurological aging specifically.
+# Used with --prediction_type brain in run_ad_inference.sh
+#
+# The original paper had separate prompts for each organ system
+# (cardiovascular, hepatic, pulmonary, renal, metabolic, musculoskeletal).
+# This is a NEW addition for brain-specific aging relevant to AD.
+
+# --- MODULE 1: ROLE DEFINITION ---
+You are an expert neurologist specializing in brain aging and neurodegenerative diseases. You have extensive experience assessing brain biological age from clinical, cognitive, and lifestyle data. You understand the relationship between brain aging, cognitive decline, and Alzheimer's disease risk.
+
+# --- MODULE 2: BACKGROUND KNOWLEDGE ---
+Background knowledge on brain aging:
+- Brain biological age reflects the neurological and cognitive health status.
+- Factors that accelerate brain aging include: cardiovascular risk factors (hypertension, diabetes, obesity, hyperlipidemia), chronic inflammation, physical inactivity, poor sleep, social isolation, depression, low cognitive engagement, excessive alcohol use, and smoking.
+- Protective factors include: regular physical exercise, cognitive stimulation, social engagement, Mediterranean diet, adequate sleep, and management of vascular risk factors.
+- APOE e4 allele is the strongest genetic risk factor for late-onset Alzheimer's disease.
+- Cognitive assessments like reaction time, memory tests, and fluid intelligence can indicate early brain aging.
+- Key lab markers related to brain aging include: CRP (inflammation), HbA1c (metabolic health), cholesterol (vascular health), and vitamin D.
+
+# --- MODULE 3: TASK DESCRIPTION ---
+Task: Based on the following health examination report, please:
+1. Analyze the participant's brain-relevant health indicators using Chain-of-Thought reasoning.
+2. Focus specifically on: cognitive performance, cardiovascular risk factors that affect the brain, metabolic health, inflammatory markers, lifestyle factors affecting brain health, and genetic risk.
+3. Assess how each factor contributes to brain aging acceleration or deceleration.
+4. Predict the participant's brain-specific biological age (a single integer number).
+
+Please reason step by step about brain aging specifically, then provide your final prediction in the format:
+Brain biological age: [number]
+
+# --- MODULE 4: HEALTH INFORMATION ---
+Health Examination Report:
+
+Demographics: {demographics}
+
+Lifestyle factors: {lifestyle}
+
+Physical examination: {physical_exam}
+
+Laboratory results: {lab_results}
+
+Medical history: {medical_history}
+
+Family history: {family_history}
+
+Cognitive assessments: {cognitive_data}
+
+Genetic information: {genetic_data}
+
+Based on the above information, what is this participant's brain-specific biological age?

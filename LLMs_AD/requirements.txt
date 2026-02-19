@@ -1,0 +1,25 @@
+# Python requirements for AD Prediction Pipeline
+# Adapted from Paper 1's requirement.txt
+
+# Core LLM inference (same as original)
+torch==2.1.0
+torchvision==0.15.0
+torchaudio==2.1.0
+vllm==0.5.5
+vllm-flash-attn==2.6.1
+
+# Data processing (same as original)
+jsonlines
+rich
+fraction
+sympy==1.12
+multiprocess
+backoff
+ray
+
+# NEW: Additional packages for AD pipeline
+pandas>=2.0.0
+numpy>=1.24.0
+tqdm
+transformers>=4.35.0
+scikit-learn>=1.3.0
