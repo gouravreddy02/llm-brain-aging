@@ -1,12 +1,9 @@
 # Python requirements for AD Prediction Pipeline
 # Adapted from Paper 1's requirement.txt
+# CUDA 12.3 compatible
 
-# Core LLM inference (same as original)
-torch==2.1.0
-torchvision==0.15.0
-torchaudio==2.1.0
+# Core LLM inference — install vllm first, it pulls compatible torch
 vllm==0.5.5
-vllm-flash-attn==2.6.1
 
 # Data processing (same as original)
 jsonlines
@@ -17,7 +14,7 @@ multiprocess
 backoff
 ray
 
-# NEW: Additional packages for AD pipeline
+# Additional packages for AD pipeline
 pandas>=2.0.0
 numpy>=1.24.0
 tqdm
